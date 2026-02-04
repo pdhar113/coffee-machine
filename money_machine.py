@@ -19,10 +19,27 @@ class MoneyMachine:
 
     def process_coins(self):
         """Returns the total calculated from coins inserted."""
+        self.money_received = 0
         print("Please insert coins.")
         for coin in self.COIN_VALUES:
-            self.money_received += int(input(f"How many {coin}?: ")) * self.COIN_VALUES[coin]
+            count = self._get_coin_count(coin)
+            self.money_received += count * self.COIN_VALUES[coin]
+        print(f"Inserted total: {self.CURRENCY}{round(self.money_received, 2)}")
         return self.money_received
+
+    def _get_coin_count(self, coin_name):
+        """Gets a valid, non-negative integer count for a coin type."""
+        while True:
+            raw = input(f"How many {coin_name}?: ").strip()
+            try:
+                count = int(raw)
+            except ValueError:
+                print("Please enter a whole number.")
+                continue
+            if count < 0:
+                print("Please enter a non-negative number.")
+                continue
+            return count
 
     def make_payment(self, cost):
         """Returns True when payment is accepted, or False if insufficient."""

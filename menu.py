@@ -21,10 +21,11 @@ class Menu:
 
     def get_items(self):
         """Returns all the names of the available menu items"""
-        options = ""
-        for item in self.menu:
-            options += f"{item.name}/"
-        return options
+        return "/".join(item.name for item in self.menu)
+
+    def get_menu_display(self):
+        """Returns menu items with prices for display."""
+        return "/".join(f"{item.name}(${item.cost})" for item in self.menu)
 
     def find_drink(self, order_name):
         """Searches the menu for a particular drink by name. Returns that item if it exists, otherwise returns None"""

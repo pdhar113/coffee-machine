@@ -36,11 +36,18 @@ python main.py
 ```
 
 Follow on-screen prompts to select drinks, insert coins, and watch resource updates.
+Tip: Type `report` to view resources or `off` to shut down.
 
 ## Extending the Project
 - Add new drinks to `menu.py`.
 - Improve `money_machine.py` to support different currencies or logging.
 - Persist resource state to a file or database.
+
+## User Experience Notes
+- Menu items display with prices (e.g., `latte($2.5)`).
+- Input is normalized (case and whitespace) for drink selection.
+- Invalid drink names are handled gracefully.
+- Coin input reprompts on invalid values and shows the inserted total.
 
 ## Notes
 This repository is intended as a learning exercise. Review the source files to understand class responsibilities and interactions.
